@@ -30,8 +30,15 @@ for (let i = 0; i < num; i++) {
         aux[j]=n*num;
         n++;
     }
-    array.push(aux);
-    
+    array.push(aux);    
 }
 
-console.log(array);
+
+
+for (let i = 0; i < array.length; i++) {
+    // Imprime cada fila como una cadena con valores separados por espacios
+    console.log(array[i].join(" "));  
+}
+
+
+//console.log(array);

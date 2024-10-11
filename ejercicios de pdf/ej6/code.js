@@ -11,7 +11,7 @@
     let num;
     do {
         num=parseInt (prompt("Ingrese un valor positivo: "));    
-    } while (isNaN(num));
+    } while (isNaN(num)|| num < 1);
 
     // document.write(typeof(num));
     
@@ -22,14 +22,15 @@
         if(num%i==0) {
             console.log(i);
             suma=suma + (i*i);
-            console.log (suma);
+            //console.log (suma);
 
         }
 
     }
     console.log(suma);
 
-    let ok=false;
+/**
+ *   let ok=false;
 
     let j=0;
     while (j < suma){
@@ -45,4 +46,16 @@
     }else{
         console.log("el numero NO es cuadrado perfecto");
     }
-    
+ * 
+ * 
+ * 
+ */
+
+    let raiz=Math.sqrt(suma);
+
+
+    if (raiz === Math.floor(raiz)) {
+        console.log("La suma es un cuadrado perfecto.");
+    } else {
+        console.log("La suma NO es un cuadrado perfecto.");
+    }
