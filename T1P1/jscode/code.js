@@ -172,12 +172,18 @@ function ejercicio4(){
 
     /**
      * 
+     * d) (1 punto) Crea otro array bidimensional llamada ‘copia’, A continuación, copia
+todos los valores de matriz a ‘copia’ y cambiando los números mayores a 10
+por un 9. Muestra ‘copia’ por consola siguiendo las reglas del apartado b. Nota:
+no uses la función slice, ni concat, ni join, ni spread operator... para crear la copia. Usa bucles.
+Quiero evaluarte competencias de bucles aquí.
      * 
+     * D) * No haces la copia de forma correcta (no cambias valores)
      * 
      */
 
     let copia=matriz.map(function(elemento){
-        elemento.map(function(ele){
+        let copia2=elemento.map(function(ele){
             if (ele>10){
                 aux=9;
             }else{
@@ -185,11 +191,45 @@ function ejercicio4(){
             }
             return aux;
         })
-        return elemento;
+        return copia2;
     });
     console.log (copia);
 
+
+    let numeros2;
+    copia.forEach(function(elemento){
+        numeros2=" ";
+        elemento.forEach(function(ele){
+            if (ele<10){
+                ele="0"+ele;
+            }
+            numeros2=numeros2+" "+ele;    
+        })
+        
+        console.log (numeros2);
+    })
+
     //E
     
+    /**
+     * 
+     * e) (1,25 punto) Pide un valor entre 1 y 3 al usuario y llámalo ‘num’. Intercambia la
+fila de matriz indicada por ‘num’ con la fila de copia indicada por ‘num’. Nota:
+En este apartado sí puedes usar cualquier herramienta del lenguaje.
 
+     * 
+     */
+    let nume;
+    do {
+        nume=parseInt(prompt("ingrese la fila a intercambiar"));
+    } while (isNaN(nume)|| nume>3 ||nume<1);
+
+    let auxi =[];
+    auxi=matriz[nume];
+    matriz[nume]=[...copia[nume]];
+    copia[nume]=[...auxi];
+
+
+    console.log(matriz);
+    console.log(copia);
 }
