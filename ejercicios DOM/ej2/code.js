@@ -17,9 +17,50 @@ vuelvo a pulsarlo, la tabla se pondrá en el centro.
 
 window.onload=function(){
 
-    let tabla=document.getElementsByTagName("table")[0];
 
-    alert(tabla.width);
-    alert(tabla.height);
-    alert(tabla.border);
+    let tabla=document.querySelectorAll("table")[0];
+    
+    let boton0=document.getElementsByTagName("button")[0];
+    let boton1=document.getElementsByTagName("button")[1];
+    let boton2=document.getElementsByTagName("button")[2];
+    // console.log(tabla)
+    // console.log(tabla.offsetWidth);
+    // console.log(tabla.offsetHeight);
+    
+    boton0.onclick=()=>{
+        alert(tabla.offsetWidth);
+        alert(tabla.offsetHeight);
+
+        /**----A----*/
+        let alto = (prompt("ingrese la altura modificado: "))+"px";
+        let ancho = (prompt("ingrese la anchura modificado: "))+"px";
+
+        tabla.style.setProperty("width", ancho);
+        tabla.style.setProperty("height", alto);
+    }
+            /**----B----- */
+    boton1.onclick=()=>{
+        alert(tabla.border);
+
+        let borde=(prompt("ingrese el tamaño del borde"))+"px solid black";
+
+        tabla.style.setProperty("border",borde);
+
+    }
+    
+    boton2.onclick=()=>{
+        let donde=tabla.getAttribute("align");
+        console.log(donde);
+        
+        if (donde=="center"){
+            tabla.align="right";            
+        }else if(donde=="right") {
+            tabla.align="left";
+        }else if(donde=="left"){
+            tabla.align="center";
+
+        }
+    }
+
+
 }
