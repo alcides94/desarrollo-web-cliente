@@ -44,13 +44,20 @@ window.onload = function () {
     function borrar() {
         let papi= document.querySelector("section")
         //let victimas=document.querySelectorAll("div");
-        
+        //borra todo
+        //let victimas=document.querySelectorAll("div");
         //para saber todos los hijos
-        let victimas=papi.children;
+        /*let victimas=papi.children;
 
         for (let i = 0; i < victimas.length; i++) {
-          //  let papi=victimas[i].parentNode;
+           let papi=victimas[i].parentNode;
             papi.removeChild(victimas[i]);
+        }*/
+
+        while(papi.firstChild){
+            papi.removeChild(papi.firstChild);
+            console.log("borrando");
+            
         }
     }
     
