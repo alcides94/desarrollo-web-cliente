@@ -6,7 +6,7 @@ window.onload=function () {
     boton.onclick=function(){
         timer=setInterval(function(){
             if(parseInt(meter.value)+1==meter.max){
-                this.disable=true;
+                this.disabled=true;
                 clearInterval(timer);
             }
             //console.log("hola")
