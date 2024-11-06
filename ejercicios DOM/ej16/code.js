@@ -2,17 +2,28 @@ let timer;
 window.onload=function () {
     let meter = document.getElementsByTagName("meter")[0];
     let boton = document.getElementsByTagName("button")[0];
+   
     
     boton.onclick=function(){
+        
         timer=setInterval(function(){
             if(parseInt(meter.value)+1==meter.max){
-                this.disable=true;
+                boton.disabled=false;
+                console.log(boton);
+                
                 clearInterval(timer);
+               // meter.value=0;
             }
-            //console.log("hola")
+            else{
                 meter.value+=1;
+                boton.disabled=true;
+            }
+                
+
             
         },100);
     }
+
+   
     
 }
