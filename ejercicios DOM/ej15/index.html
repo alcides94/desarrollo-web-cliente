@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio Menu acordeon</title>
+    <script src="code.js"></script>
+    <style>
+
+        ul{
+            list-style: none;
+            padding: 0;
+            margin:0;
+        }
+        li{
+           
+        }
+
+        #menu{
+            width: 300px;
+            border-bottom: 1px solid black;
+            background-color: cadetblue;
+            
+        }
+        #menu li{
+            border-top: 1px solid black;
+        }
+        .subcategoria{
+            font-size: .75em;
+            background-color: aqua;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li>Inicio
+            <ul class="subcategoria">
+                <li>Portada</li>
+                <li>Acerca de mí</li>
+                <li>Mis fotos</li>
+            </ul>
+        </li>
+        <li>Proyecto
+            <ul class="subcategoria">
+                <li>Web Apps</li>
+                <li>Mobile Apps</li>
+                <li>Juegos</li>
+            </ul>
+        </li>
+        <li>Portfolio
+            <ul class="subcategoria">
+                <li>Páginas webs</li>
+                <li>Software</li>
+            </ul>
+        </li>
+        <li>Contacto</li>
+    </ul>
+</body>
+</html>

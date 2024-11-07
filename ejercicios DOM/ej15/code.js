@@ -1,23 +1,12 @@
-/**
- * 
- * 14.- Crear un menú vertical con efecto acordeón usando los siguientes apartados:
-• Inicio
-◦ Portada.
-◦ Acerca de mi.
-◦ Mis fotos.
-• Proyectos
-◦ Web Apps.
-◦ Mobile Apps.
-◦ Juegos.
-• Portfolio
-◦ Páginas webs.
-◦ Softwar
- * A tener en cuenta:
+/*15.- Crear el mismo menú que el ejercicio anterior pero en horizontal. Ahora, al pasar el
+ratón por encima de cada apartado, aparece el bloque de subapartados correspendiente.
+A tener en cuenta:
 • El menú debe tener una maquetación en CSS.
-• Los subapartados permanecen ocultos hasta que se pulsa sobre el apartado
-correspondiente.
-• Al abrir un bloque de subapartados, se cierran los demás
- */
+• El bloque de subapartados quedará por encima del resto de elementos que tenga
+debajo (pej, sections, articles...), no desplazará al resto de elementos.
+• Un bloque de subapartados desaparecerá cuando se pase por encima de otro
+apartado.
+*/
 
 window.onload=function(){
     //let menu=document.getElementById("menu");
@@ -32,7 +21,7 @@ window.onload=function(){
     let aux;
     for (let li of listaMenu) {
         
-        li.onclick=()=>{
+        li.onmouseover=()=>{
             let lissss=document.querySelectorAll('.subcategoria');
             lissss.forEach(element => {
                 element.style.setProperty("display","none");

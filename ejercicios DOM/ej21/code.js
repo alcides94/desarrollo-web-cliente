@@ -12,7 +12,7 @@ window.onload = function () {
     let enlace = document.getElementsByTagName("a")[0];
 
     enlace.onmouseover=function () {
-        let caja = document.createElement("div");
+        var caja = document.createElement("div");
         caja.style.setProperty('width','200px');
         caja.style.setProperty('height','200px');
         caja.style.setProperty('background-color','aqua');
@@ -31,7 +31,17 @@ window.onload = function () {
 
         papi.appendChild(caja);
 
-        papi.insertBefore(caja,enlace);
+        //papi.insertBefore(caja,enlace);
+    }
+    enlace.onmouseout=()=>{
+        let padre=document.getElementsByTagName("body")[0];
+
+        let cajas=document.getElementsByTagName("div");
+
+        let cajasArray=Array.from(cajas);
+
+        
+        padre.removeChild(cajasArray[0]);
     }
     
     

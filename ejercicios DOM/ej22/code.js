@@ -18,3 +18,47 @@ con su tamaño original dentro de la capa semitransparente que lo cubre todo.
  */
 
 
+window.onload=()=>{
+    let imagen=document.querySelector("img");
+
+    imagen.onclick=()=>{
+        imagen.style.setProperty("display","none");
+        let pantallaAncho=parseInt(screen.width);
+        let pantallaAlto=parseInt(screen.height);
+
+        console.log(pantallaAlto);
+        console.log(pantallaAncho);
+
+        let caja = document.createElement("div");
+
+        caja.setAttribute("class","caj")
+        caja.style.setProperty("width",pantallaAncho+"px");
+        caja.style.setProperty("height",pantallaAlto+"px");
+
+        console.log(caja);
+        
+
+        let padre=document.getElementsByTagName("body")[0];
+
+        padre.appendChild(caja);
+        
+        let imagenOriginal=document.createElement("img");
+        imagenOriginal.setAttribute("src", "../img/river4.jpg");
+        
+        caja.style.setProperty("display","flex");
+        caja.style.setProperty("justify-content","center");
+        caja.style.setProperty("align-items","center");
+        caja.appendChild(imagenOriginal);
+        
+        console.log(padre);
+
+        caja.onclick=()=>{
+            caja.removeChild(imagenOriginal);
+            padre.removeChild(caja);
+            imagen.style.setProperty("display","block");
+        }
+        
+    }
+    
+    
+}

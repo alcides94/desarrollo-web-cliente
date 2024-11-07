@@ -1,4 +1,4 @@
-window.onload = function () {
+    window.onload = function () {
 
     let boton1=document.getElementsByTagName("input")[0];
     let boton2=document.querySelectorAll("input[type='button']")[1];
@@ -45,20 +45,20 @@ window.onload = function () {
         let papi= document.querySelector("section")
         //let victimas=document.querySelectorAll("div");
         //borra todo
-        //let victimas=document.querySelectorAll("div");
+        let victimas=document.querySelectorAll("div");
         //para saber todos los hijos
-        /*let victimas=papi.children;
+        //let victimas=papi.children;
 
         for (let i = 0; i < victimas.length; i++) {
            let papi=victimas[i].parentNode;
             papi.removeChild(victimas[i]);
-        }*/
-
-        while(papi.firstChild){
-            papi.removeChild(papi.firstChild);
-            console.log("borrando");
-            
         }
+
+        // while(papi.firstChild){
+        //     papi.removeChild(papi.firstChild);
+        //     console.log("borrando");
+            
+        // }
     }
     
 }
