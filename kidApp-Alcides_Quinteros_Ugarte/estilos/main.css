@@ -6,4 +6,18 @@ body, main{
 main{
     background-color: aqua;
     height: 100vh;
+    position: relative;
+}
+
+.cuadrado{
+    border: 1px solid black;
+    position: absolute;
+    
+}
+
+.circulo{
+    border: 1px solid black;
+    border-radius: 100%;
+    position: absolute;
+
 }
