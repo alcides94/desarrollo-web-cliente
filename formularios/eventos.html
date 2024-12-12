@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos ADV</title>
+
+    <style>
+        section{
+            margin: 0 auto;
+            width: 25%;
+            height: 300px;
+            padding: 2%;
+            background-color:darkgreen;
+        }
+
+        div{
+            margin: 0 auto;
+            width: 75%;
+            height: 200px;
+            padding: 2%;
+            background-color: darkkhaki;
+        }
+
+        p{
+            margin: 0 auto;
+            width: 75%;
+            height: 100px;;
+            padding: 2%;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <section>   
+        <div>
+            <p>
+                haz click aqui
+            </p>
+        </div>
+    </section>
+
+    <input type="button" value="QUITAR">
+    
+</body>
+</html>
+
+<script>
+    let abuelo = document.querySelector("section");
+    let padre = document.querySelector("div");
+    let hijo = document.querySelector("p");
+
+    /*abuelo.onclick=function(){
+        alert("soy abuelo");
+    }
+    padre.onclick=function(){
+        alert("soy padre");
+    }
+    hijo.onclick=function(){
+        alert("soy hijo");
+    }*/
+   
+    /*---------------------*/
+
+    /*abuelo.addEventListener("click",function(){
+        alert("soy abuelo");
+    });
+    padre.addEventListener("click",function(){
+        alert("soy padre");
+    },true);
+    hijo.addEventListener("click",function(){
+        alert("soy hijo");
+    },true);*/
+
+    /*---------------------*/
+
+    /* EN CASO ANTERIOR AL TENER LA MISMA VARIRIABLE Y LA PROPIEDAD SE VAN MACHACANDO Y SE EJECUTA EL ULTIMO*/
+
+   /* hijo.addEventListener("click", function () {
+        alert("soy el primero");
+    });
+    
+    hijo.addEventListener("click", function () {
+        alert("soy el segundo");
+    },true);
+    hijo.addEventListener("click", function () {
+        alert("soy el tercero");
+    },true);
+    */
+
+    function antiniolo(){
+        alert("soy el primero");
+    }
+
+    hijo.addEventListener("click", antiniolo);
+
+    let boton =document.querySelector("input[type='button']");
+
+    boton.onclick=function(){
+        alert("borrando evento de hijo");
+        
+        hijo.removeEventListener("click",antiniolo);
+    }
+
+</script>

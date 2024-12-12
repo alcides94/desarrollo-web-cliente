@@ -10,7 +10,7 @@
  * document.forms[0]
  * 
  * 1- d.get /d.querySelector
- * 2- formu.adri
+ * 2- formu.adri //ingresa mediante el nombre
  * 3-formu.elements[0]
  * 
  * 
