@@ -18,5 +18,12 @@
  *   
  * ele.defaultValue // se asgina el valor por degecto
  * 
- * 
- */
+ * /************************************/
+
+ /**
+  * 
+  * 
+  * LOOKAHEAD -> QUE ES
+  * 
+  * 
+  */
