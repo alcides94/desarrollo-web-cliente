@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Ejemplo de JavaScript</title>
+    
+  </head>
+  <body>
+    <form name="formulario" id="formulario">
+      Edad:<br />
+      <select name="edad">
+        <option value="<18" selected>Menor de 18 años</option>
+        <option value=">18 y <60">Entre 18 y 60 años</option>
+        <option value=">60">Mayor de 60 años</option>
+      </select>
+      <input type="button" name="b" value="Ver Valores" onclick="Mostrar()" />
+    </form>
+    <script type="text/javaScript">
+
+        let formu=document.formulario;
+        
+        let sele=formu.edad;
+        
+        let opt=sele.options[0].selected;
+        //esta seleccionado
+        console.log(opt);
+
+        sele.options[1].selected=true;
+
+        console.log(sele.options[0].selected);
+
+        console.log(sele.options[0].text);
+
+
+      function Mostrar() { 
+        msg="Elementos:"+formulario.edad.length+"\n"; 
+        msg+="Edad:"+ formulario.edad.options[formulario.edad.selectedIndex].value+"\n"; 
+        msg+="Opcion Seleccionado:"+ formulario.edad.selectedIndex+"\n"; 
+        msg+="Total:"+ formulario.edad.size+"\n"; 
+      
+      alert(msg); }
+    </script>
+</body>
+
+
+  </html>
+

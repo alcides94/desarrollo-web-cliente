@@ -29,24 +29,21 @@ window.onload=()=>{
 
     boton.addEventListener("click",function(){
         let arrayCampo1=Array.from(campo1.value);
-        let ordenado1=arrayCampo1.sort();
+        let ordenado1=arrayCampo1.sort().join("");
         console.log(ordenado1);
         
         let arrayCampo2=Array.from(campo2.value);
-        let ordenado2=arrayCampo2.sort();
+        let ordenado2=arrayCampo2.sort().join("");
         console.log(ordenado2);
-        
-        let ok=ordenado1.every((ele,index)=>(
-            ele===ordenado2[index]
-        ));
-
-        if (ordenado1.length==ordenado2.length && ok==true){
-            alert("son ANAGRAMAS");
+       
+        if(ordenado1==""||ordenado2==""){
+            alert("no puede haber campos vacios");
+        }else if(ordenado1==ordenado2){
+            alert("SON ANAGRAMAS");
         }else{
-            alert("NO son ANAGRAMAS");
+            alert("NO SON ANAGRAMAS");
         }
-        
-        
+    
     });
 
 
