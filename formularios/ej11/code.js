@@ -54,47 +54,104 @@ window.onload=()=>{
         
         e.preventDefault();
         console.log(arrayElement);
-        
+        let error=false;
         arrayElement.forEach(function (params) {
-            console.log(params.name);
+            //console.log(params.name);
             
+            if (error) return;
+
             switch (params.name) {
                 case "dni":
                     //console.log("dni");
-                    if (condition) {
+                    if(params.value.length==9 && params.value!=""){
+                        console.log(params.value);
+                        break;
+                    }else{
+                        console.log("error aqui "+params);
+                        params.focus();
+                        error=true;
+                        break;
                         
                     }
-                    break;
+                    
             
                 case "apellido":
                     //console.log("dni");
+                    let palabrasApe = params.value.split(" ");
+                    //console.log(ape);
                     
-                    break;
-            
+                    if(palabrasApe.length<3 && params.value!=""){
+                        console.log(params.value);
+                        break;    
+                    }else{
+                        error=true;
+                        console.log("error aqui "+params);
+                        params.focus();
+                        break;
+                    }
                 case "nombre":
                     //console.log("dni");
-                    
-                    break;
-            
+                    let palabrasNom = params.value.split(" ");
+                    if(palabrasNom.length<3 && params.value!=""){
+                        console.log(params.value);
+                        break;
+                    }else{
+                        error=true;
+                        console.log("error aqui "+params);
+                        params.focus();
+                        break;
+                    }
                 case "fecha":
-                    //console.log("dni");
+                    let dia=params.value.slice(0,2);
+                    let mes=params.value.slice(3,5);
+                    let ano=params.value.slice(6,10);
                     
-                    break;
+                    if(params.value.length === 10 && 
+                        params.value[2] === '/' && 
+                        params.value[5] === '/' && 
+                        dia.length==2 && mes.length==2 && ano.length==4 && params.value!=""){
+                        console.log(params.value);
+                        break;
+                    }else{
+                        error=true;
+                        console.log("error aqui "+params);
+                        params.focus();
+                        break;
+                    }
             
                 case "web":
-                    //console.log("dni");
+                    //https://www.algo.tresletras
                     
-                    break;
-            
+                    let webFin=params.value.slice(-4);
+                    //&& webFin.startsWith(".") 
+                    if(params.value.slice(0,12)=="https://www." && params.value!=""){
+                        console.log(params.value);
+                        break;
+                    }else{
+                        error=true;
+                        console.log("error aqui "+params);
+                        params.focus();
+                        break;
+                    }
                 case "contrasena":
-                    //console.log("dni");
-                    
-                    break;
-            
-                default:
-                    break;
+                    if(params.value.length>7 && params.value.length<13 && params.value!=""){
+                        console.log(params.value);
+                        break;
+                    }else{
+                        error=true;
+                        console.log("error aqui "+params);
+                        params.focus();
+                        break;
+                    }            
+              //  default:
+                // break;
             }
 
+            if (params.value.trim() === "") {
+                alert(`${params.name} no puede estar vacío`);
+                params.focus();
+                return;
+            }
 
 
         })
