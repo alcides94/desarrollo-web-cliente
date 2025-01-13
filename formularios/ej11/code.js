@@ -61,7 +61,9 @@ window.onload=()=>{
             switch (params.name) {
                 case "dni":
                     //console.log("dni");
-                    
+                    if (condition) {
+                        
+                    }
                     break;
             
                 case "apellido":
