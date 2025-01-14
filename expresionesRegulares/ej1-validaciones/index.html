@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pruebas de Expresiones Regulares</title>
+    <script src="code.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input {
+            margin-top: 5px;
+            padding: 5px;
+            width: 300px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+        p {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pruebas de Expresiones Regulares</h1>
+    <form id="regexForm">
+        <!-- Campo a) ho*a -->
+        <label for="inputA">a) Valida 'ho*a':</label>
+        <input type="text" id="inputA" placeholder="Escribe algo">
+        <p id="resultA"></p>
+
+        <!-- Campo b) ([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]) -->
+        <label for="inputB">b) Valida letras mayúsculas (excluye vocales):</label>
+        <input type="text" id="inputB" maxlength="1" placeholder="Escribe una letra">
+        <p id="resultB"></p>
+
+        <!-- Campo c) ^[0-9]{5}$ -->
+        <label for="inputC">c) Valida código postal (5 dígitos):</label>
+        <input type="text" id="inputC" maxlength="5" placeholder="Escribe un número">
+        <p id="resultC"></p>
+
+        <!-- Campo d) [0-4][0-9][0-2][0-9]{3} -->
+        <label for="inputD">d) Valida un número específico:</label>
+        <input type="text" id="inputD" placeholder="Escribe un número">
+        <p id="resultD"></p>
+
+        <!-- Campo e) ([0-4][0-9]|5[0-2])[0-9]{3} -->
+        <label for="inputE">e) Valida números entre 00000 y 52999:</label>
+        <input type="text" id="inputE" placeholder="Escribe un número">
+        <p id="resultE"></p>
+
+        <!-- Campo f) (^.+[a-z])(.*[A-Z])(.*\d)[a-zA-Z]{8,12}$ -->
+        <label for="inputF">f) Valida contraseñas complejas:</label>
+        <input type="text" id="inputF" placeholder="Escribe una contraseña">
+        <p id="resultF"></p>
+
+        <button type="button" id="validateAll">Validar todo</button>
+    </form>
+
+    
+</body>
+</html>
