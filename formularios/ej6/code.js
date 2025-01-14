@@ -12,7 +12,7 @@ window.onload=()=>{
 let formu = document.formulario;
 
 let cajas= document.querySelectorAll("input[type=checkbox]");
-let sele= document.querySelector("select");
+let sele= document.querySelector("textarea");
 
 console.log(sele);
 
