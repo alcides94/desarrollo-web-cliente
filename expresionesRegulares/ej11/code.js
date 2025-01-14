@@ -32,7 +32,7 @@ window.onload = () => {
       web: /^https:\/\/www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/, // https://www.algo.tld
       password: /^.{8,12}$/, // Entre 8 y 12 caracteres
     };
-  
+  /** */
     formulario.addEventListener("submit", (e) => {
       // Evitamos el envío del formulario solo si hay errores
       const dni = document.getElementById("dni").value;
@@ -90,10 +90,84 @@ window.onload = () => {
   };
   
 
+/**
+ * 
+ * 
+
+1. DNI (8 números y 1 letra)
+javascript
+Copiar código
+/^\d{8}[A-Za-z]$/
+Explicación:
+
+^: Marca el inicio de la cadena.
+\d{8}: Coincide exactamente con 8 dígitos (\d representa un número del 0 al 9, y {8} indica que deben ser 8 dígitos).
+[A-Za-z]: Coincide con una letra, mayúscula o minúscula.
+$: Marca el final de la cadena.
+Esto asegura que el DNI tenga exactamente 8 números seguidos de una letra, sin caracteres adicionales.
+
+2. Nombre (uno o dos nombres)
+javascript
+Copiar código
+/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)?$/
+Explicación:
+
+^: Marca el inicio de la cadena.
+[A-Za-zÁÉÍÓÚáéíóúñÑ]+: Coincide con una o más letras (incluyendo caracteres acentuados y la ñ).
+(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)?: Coincide opcionalmente con un espacio seguido de otra palabra (uno o dos nombres).
+$: Marca el final de la cadena.
+Esto asegura que el nombre contenga una o dos palabras, sin números ni caracteres especiales.
+
+3. Apellidos (uno o dos apellidos)
+javascript
+Copiar código
+/^[A-Za-zÁÉÍÓÚáéíóúñÑ]+(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)?$/
+Explicación: Es idéntica a la del campo "Nombre", ya que los apellidos tienen las mismas características (uno o dos palabras, sin caracteres especiales ni números).
+
+4. Fecha de nacimiento (formato dd/mm/yyyy)
+javascript
+Copiar código
+/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/
+Explicación:
+
+^: Marca el inicio de la cadena.
+(0[1-9]|[12][0-9]|3[01]): Coincide con días válidos del mes:
+0[1-9]: Días del 01 al 09.
+[12][0-9]: Días del 10 al 29.
+3[01]: Días 30 y 31.
+\/: Escapa el carácter /, que separa las partes de la fecha.
+(0[1-9]|1[0-2]): Coincide con meses válidos (01 al 12).
+\/: Otro separador /.
+\d{4}: Coincide con un año de 4 dígitos.
+$: Marca el final de la cadena.
+Esto asegura que el formato sea estrictamente dd/mm/yyyy y que los días y meses sean válidos.
+
+5. Web personal (formato https://www.algo.tresletras)
+javascript
+Copiar código
+/^https:\/\/www\.[a-zA-Z0-9-]+\.[a-zA-Z]{3}$/
+Explicación:
+
+^: Marca el inicio de la cadena.
+https:\/\/: Coincide con https://. Se escapan los caracteres /.
+www\.: Coincide con www..
+[a-zA-Z0-9-]+: Coincide con uno o más caracteres alfanuméricos o guiones (-).
+\.: Coincide con el punto . que separa el dominio y la extensión.
+[a-zA-Z]{3}: Coincide con una extensión de exactamente tres letras.
+$: Marca el final de la cadena.
+Esto asegura que la web tenga el formato correcto, empezando con https://www. y terminando con una extensión de tres letras.
+
+6. Contraseña (entre 8 y 12 caracteres)
+javascript
+Copiar código
+/^.{8,12}$/
+Explicación:
+
+^: Marca el inicio de la cadena.
+.{8,12}: Coincide con cualquier carácter (.) entre 8 y 12 veces.
+$: Marca el final de la cadena.
+Esto asegura que la contraseña tenga una longitud mínima de 8 y máxima de 12 caracteres, sin restricciones adicionales.
 
 
-
-
-
-
+ */
 
