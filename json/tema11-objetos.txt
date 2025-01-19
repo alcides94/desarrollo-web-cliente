@@ -1,0 +1,229 @@
+/*OBJETOS*/
+un objeto es una estructura de datos que en la vida real representa 
+a un objeto que tiene propiedades, alores y acciones
+
+propiedades = caracteristicas
+valores = son los valores de las propiedades
+metodos = acciones que puede realizar el objeto, se definen usando funciones
+
+OBJETO -> ARRAY ASOCIATIVO
+
+en JS los objetos se definen utilizando JSON que es exactamente
+igual que los array asociativos
+
+ej:
+
+const movil = {
+ marca: "Wiko",
+ modelo: "Harry II",
+ SO: "Android 8",
+ pantalla: 5
+}
+
+Como se ve en los ejemplos, a la hora de definir objetos debemos tener en cuenta lo
+siguiente:
+• Se usan llaves { } para definir el objeto.
+• Cada elemento siempre se compone de pares clave (un nombre) y valor.
+• Los elementos se separan por comas. El último elemento no lleva coma.
+• La clave y el valor de cada elemento vas separados por los dos puntos :
+• El nombre de cada clave va sin comillas, por tanto no está permitido el uso de
+espacios para definir una clave
+• Si se usan cadenas como valor de un elemento, debe ir entre comillas simples o
+dobles si se usa el espacio en blanco
+
+otro ejemplo mas complejo:
+movil: {
+ marca: "Wiko",
+ modelo: "Harry II",
+ SO: "Android 8",
+ pantalla: 5,
+ prestaciones: ["lector huella","anti rayaduras",
+ "batería extraible","dual sim"]
+ }
+
+PARA ACCEDER A LOS DATOS:
+-----------------------------------------------
+Para acceder a las diferentes propiedades de un objeto se usa la nomenclatura del punto:
+
+nombre_del_objeto. nombre_propiedad
+nombre_objeto['nombre_propiedad']
+
+Podemos mostrar cualquiera de sus propiedades haciendo:
+console.log(alumno.nombre);
+console.log(alumno['nombre']);
+
+Si el objeto tiene a su vez objetos como valores de sus propiedades...
+
+… podemos seguir usando la notación punto o la de corchetes tantas veces como haga
+falta:
+console.log(alumno.movil.marca);
+console.log(alumno['movil']['marca']);
+
+para recorrerlos es a traves de un for  con el tamaño del arrayº ej:
+
+for(let i=0; i<alumno.movil.prestaciones.length; i++){
+ console.log(alumno.movil.prestaciones[i]);
+}
+
+
+
+PARA MODIFICAR DATOS
+--------------------------------------------
+De esta forma también podemos cambiar el contenido de cada propiedad del objeto:
+
+nombre_del_objeto. nombre_propiedad= NUEVO_VALOR;
+
+cambiar tanto propiedades de popiedades, tambien datos de array y demas
+alumno.movil.modelo = "view4 Lite";
+alumno.movil.prestaciones[3] = "acelerometro";
+
+alumno.nombre = "Jaime";
+
+Si intentamos cambiar una propiedad ue no existe nos dira undefinded y NO error
+
+OPERADORES:->
+Operador IN
+------------
+Este operador necesita una cadena y un objeto y nos dice si ese objeto tiene la propiedad
+indicada en la cadena:
+console.log("nombre" in alumno); //true
+console.log("nacionalidad" in alumno) //false
+
+METODOS
+--------------
+6.4.1 delete
+Elimina la propiedad indicada del objeto:
+delete alumno.nombre;
+console.log("nombre" in alumno); //false
+
+*****************6.4.2 Object.key
+Este es un método estático22. Recibe un objeto creado y devuelve un array de cadenas
+con el nombre de sus propiedades:
+
+let datos = Object.keys(alumno);
+console.log(datos);
+
+Aparecería por consola: [ "nombre", "apellidos", "edad", "dni",
+"notas", "movil" ]
+
+Como es lógico, este método se puede aplicar en objetos que están dentro de objetos:
+
+let datos = Object.keys(alumno.movil);
+console.log(datos);
+
+*****************6.4.3 Object.values
+Devuelve un array con los valores de cada propiedad
+del objeto que se pasa como parámetro.:
+
+let datos = Object.values(alumno.movil.prestaciones);
+console.log(datos);
+
+["lector huella", "anti rayaduras","batería extraible", "dual sim" ]
+
+*******************6.4.3 Object.entries
+
+También es un método estático. Devuelve un array bidimensional compuesto por arrays
+que contienen los pares propiedad-valor del objeto que se pasa como parámetro:
+let datos = Object.entries(alumno.movil.prestaciones);
+console.log(datos); 
+
+[
+    [ "nombre", "Sr. Hormiga" ],
+    [ "apellidos", "Trabajador Luser" ],
+    [ "edad", 117 ],
+    [ "dni", "23456789K" ],
+    [ "notas", (7) […] ],
+    [ "movil", {…} ]
+]
+
+*********************6.4.4 Object.assign
+También es un método estático. Añade las propiedades de un objeto a otro:
+let objA = {a: 1, b:2};
+let objB = {c:3, d:4};
+Object.assign(objA,objB); //vuelca en A lo que hay en B
+console.log(objA);
+Obtendríamos el objeto A modificado: { a: 1, b: 2, c: 3, d: 4 }
+En si ObjA y objB tiene un mismo clave pero distinto valor se machaca el valor anterior
+
+BUCLES ESPECIALES
+----------------------------------------------------------
+***************6.5.1 FOR-IN
+Este bucle recorre automáticamente todas las propiedades del objeto. Su sintaxis es:
+for(let propiedad in objeto){
+ . . .//esto nos da el nombre de la propiedad
+}
+//PARA SABER EL NOMBRE DE LA PROPIEDAD
+for(prop in alumno){
+ console.log(prop);
+ //SIEMPRE NOS DA EL INDICE O LA CLAVE DEL ARRAY
+ }
+
+ //PARA SABER EL NOMBRE DE LA PROPIEDAD Y SU valor (laa notacion . punto no funciona en estos casos)
+ for(prop in alumno){
+    console.log(prop+":"+ alumno[prop]);
+}
+en caso que dicho objeto tenga objetos lamentablemente no obtendremos los valores
+
+******************6.5.2 FOR-OF
+En cambio el FOR OF te da directamente el valor del array 
+for(valor of alumno.notas){
+    console.log(valor);
+}
+
+*Object.keys(objeto) devuelve un array con las propiedades del objeto que se
+pasa como parámetro.
+for (valor of Object.keys(alumno)){
+    console.log(valor);
+}
+
+*Object.values(objeto) devuelve un array con los valores de cada propiedad del
+objeto que se pasa como parámetro.
+for (valor of Object.values(alumno)){
+    console.log(valor);
+}
+
+*Object.entries(objeto) devuelve un array compuesto por arrays que contienen
+los pares propiedad-valor del objeto que se pasa como parámetro.
+for (valor of Object.entries(alumno)){
+    console.log(valor);
+}
+
+COPIADO DE OBJETOS
+--------------------------------
+****************6.7.2 Usando Object.assign 
+Como hemos visto en otros apartados de este mismo capítulo, Object.assign
+“copia” las propiedades de un objeto en otro. Por tanto, podría ser un buen candidato
+para solucionar nuestro problema PERO SOLO SE HACE UNA COPIA SUPERFIIAL DE 1 NIVEL
+
+let objB = Object.assign({},objA);
+
+************6.7.3 Operador de propagación (spread operator)
+El operador de propagación que se vio en arrays funciona igual con los objetos, es decir,
+podemos “copiar” objetos haciendo lo siguiente TAMBIEN REALIA UNA COPIA SUPERFICAL DE 1ER PLANO
+
+let objB = {...objA};
+
+***************6.7.4 usando JSON
+Para crear una copia profunda de un objeto es usando las funciones
+JSON.parse y JSON.stringify
+El funcionamiento es simple: pasamos el objeto a copiar a cadena y lo asignamos a la
+nueva variable. Luego, en la nueva variable deshacemos el cambio: pasamos la cadena a
+objeto.
+
+let objB = JSON.stringify(objA);
+objB = JSON.parse(objB);
+
+strcturedClone()
+
+Desventajas 
+* NO PUEDE CLONAR FUNCIONES NI METODOS
+* NO PUEDE CLONAR ELEMENTOS DOM
+* NO PRESERA PROPIEDADES 
+
+Puedes utilizar la opción de transferencia para mover objetos entre
+ el objeto original y el clonado sin crear duplicados, lo que puede
+ ser útil para validar datos o asegurar la inmutabilidad. En general,
+ structuredClone() es una valiosa adición al conjunto de herramientas
+ de un desarrollador y hace que la clonación de objetos en JavaScript 
+ sea más fácil que nunca.
+

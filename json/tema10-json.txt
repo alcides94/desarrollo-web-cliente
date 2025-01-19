@@ -1,0 +1,158 @@
+JSON -> JAVASCRIP OBJET NOTATION
+sirve para intercambiar informacion de manera mas sencilla y clara para un ser humano
+
+Represeenta estructuras complejas de forma muy sensilla
+
+Este formato viene incluido en el nuecleo de JS por ende se podra trabajar4
+con esta notacion
+
+EN GENERAL-> JSON es facil de escribir y leer para los humanos y facil de analizar y generar para las maquinas7
+haciendolo popular en el intercambio de datos ademas es independiente en el lenguaje lo
+que hace que pueda ser utilizaco en cualquier lenguaje
+
+JSON es un lenguaje para el itercambio de datos NO es un lenguaje de programacion
+por lo tanto no tiene  tipo de daots y demas cuestiones 
+
+Cuando usamos JSON con arrays sencillos:
+• El contenido del array va entre corchetes [ ].
+• Los elementos deben ir separados por comas.
+• Si algún elemento es una cadena, debe ir entre comillas simples o dobles si se
+usa el espacio en blanco.
+
+JSON
+Array simple: Ejemplo
+var usuario = ["Jaime", "Hormiga", "Málaga", 50, true];
+
+Array Bidimencional:
+Ej:
+var temperaturas_cuidades = [
+ [12,10,11],
+ [5,0,2,6],
+ [10,3]
+];
+
+Array Asociativo u Objetos:
+Se accede a los elementos mediante claves
+Por tanto, la forma correcta de llamar a los arrays asociativos en Javascript es Objetos.
+Ej:
+var usuario = {
+ "nombre": "Jaime",
+ "apellido": "Hormiga",
+ "ciudad": "Málaga",
+ "edad": 50
+} 
+
+Cosas importantes a destacar cuando usamos JSON con arrays asociativos:
+• El contenido del array asociativo va entre llaves { }.
+• Los elementos (pares clave-valor) se separan por comas.
+• La clave y el valor de cada elemento vas separados por los dos puntos :
+• La notación JSON especifica que las claves siempre deben ir entre comillas
+dobles. Si bien usando Javascript hay situaciones en las que las comillas dobles
+en las claves son opcionales (pej, no contener caracteres especiales o espacios),
+esta forma contradice las normas de la notación estricta de JSON.
+• El valor de cada elemento puede o no ir entre comillas simples o dobles si se usa
+el espacio en blanco. Depende, obviamente, del tipo de dato que represente.
+
+MEZCLA de arrays
+
+var cliente = {
+ "nombre": "Alicia",
+ "apellidos": "Ortega",
+ "estado": 1,
+ "titulaciones": [ "Bioquímica", "Veterinaria", "Biología" ],
+ "tests": {
+ "psicotecnico": 9,
+ "aptitudes": 8.6,
+ "equipo": 7.45
+ }
+}
+
+JSON.stringify
+----------------------------------
+JSON.stringify(objeto) recibe una estructura Javascript definida en formato
+JSON (un objeto) y devuelve su representación en forma de cadena en el formato JSON
+correspondiente.
+
+let objeto = {
+ nombre: "Jaime",
+ edad: 45,
+ ciudad: "TeatinosTown"
+};
+
+let jsonString = JSON.stringify(objeto);
+console.log(jsonString);
+
+Obtendríamos por consola la siguiente cadena de texto:
+{"nombre":"Jaime","edad":45,"ciudad":"TeatinosTown"}
+
+Esta funcion puede tener dos parametros adicionales (replace y espacio)
+
+** El parametro replacer: se utiliza para transformar valores antes de
+ser incluidos en la cadena JSON. puede ser utiliza para filtrar
+o trasnformar los valores segun sea necesario
+
+EJ:
+
+let objeto = { a: 1, b: 2, c: 3 };
+let cadena = JSON.stringify(objeto, function(key, val){
+ if (key === 'a') return (value * 2)
+ else return value;
+ });
+
+
+console.log(cadena); //obtenemos {"a":2,"b":2,"c":3}
+
+** El paramentro Espacio: se define la cantidad de espacio que se 
+utilizara ara dar formato a la cadena JSON lo que facilita la 
+lectura 
+EJ:
+
+let objeto = {
+ nombre: "Jaime",
+ edad: 45,
+ciudad: "TeatinosTown"
+};
+let salida = JSON.stringify(objeto, null, 0);
+console.log(salida);
+
+Usando el número anterior, la salida será:
+
+{"nombre":"Jaime","edad":45,"ciudad":"TeatinosTown"}
+
+Si usáramos un numero mayor, pej 20, obtendríamos:
+{
+ "nombre": "Jaime",
+ "edad": 45,
+ "ciudad": "TeatinosTown"
+}
+
+JSON.parse
+-----------------------------
+JSON.parse(cadena_json): transforma una cadena que sigue el formato JSON
+en una estructura Javascript válida (un objeto).
+let cadena = '{"nombre":"Jaime","edad":45,"ciudad":"TeatinosTown"}';
+let objeto = JSON.parse(cadena);
+
+console.log(objeto.nombre); // Salida: Jaime
+console.log(objeto.edad); // Salida: 45
+console.log(objeto.ciudad); // Salida: TeatinosTown
+
+
+6.5 console.table
+Como curiosidad, dentro de la clase console que posee Javascript, podemos motrar
+de forma tabulada arrays de objetos que posean las mismas propiedades:
+const alumnos = [
+{ nombre: 'Jose', edad: 22},
+{ nombre: 'Manu', edad: 25},
+{ nombre: 'Pablo', edad: 31}
+]
+console.table(alumnos)
+
+TENDREMOS UNA TABLA CON UNA INTERFAZ MAS intuitiva PARA EL usuario
+
+Es importante destacar dos aspectos de console.table:
+1. El formato de la tabla mostrada depende del navegador usado (en la imagen se
+ha usado Firefox).
+2. La primera columna de la tabla siempre será indice y hace referencia a la
+posición que ocupa el objeto dentro del array (en la imagen se ve que ese campo
+empieza en 0).
