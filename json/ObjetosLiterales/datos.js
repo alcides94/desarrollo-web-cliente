@@ -48,19 +48,7 @@ let alumno={
 
 //console.table(alumno);
 
-for (alu in alumno){
 
-    if (alu == "profesor"){    
-        for (let a in alu) {
-            console.log(Object.values(a)); 
-        }
-        
-        
-    }else{
-        console.log(alu + " "+ alumno[alu]);    
-    }
-    
-}
 
 let caja = document.querySelector("div");
 
