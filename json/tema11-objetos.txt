@@ -224,6 +224,6 @@ Puedes utilizar la opción de transferencia para mover objetos entre
  el objeto original y el clonado sin crear duplicados, lo que puede
  ser útil para validar datos o asegurar la inmutabilidad. En general,
  structuredClone() es una valiosa adición al conjunto de herramientas
- de un desarrollador y hace que la clonación de objetos en JavaScript 
+ de un desarrollador y h+ace que la clonación de objetos en JavaScript 
  sea más fácil que nunca.
 
