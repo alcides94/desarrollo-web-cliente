@@ -77,20 +77,42 @@ let alumno={
         asignaturas[1],
         asignaturas[2]
     ],
-    notas:[7,7,8]
+    notas:[[7,7,8],[8,9,2],[1,5,4]],
+    calcularMedia(){
+        let total=0;
+        let i=0;
+        for (const n of alumno.notas) {
+            n.forEach(function (params) {
+                total+=params;
+                i++;
+            })
+        }
+        let res=total/i;
+        return res;
+
+    },
+    mediasAsignatura(){
+        let i=0;
+
+        for (const key of alumno.notas) {
+            console.log(key);
+            
+        }
+    }
 
 }
 
-//console.table(alumno);
+console.table(alumno.listaAsignaturas[0].nombre);
 
-
+console.log(alumno.mediasAsignatura());
+ 
 let texto="";
 for (const alu in alumno) {
     if (alu=="profesor") {
         for (const pro in alumno[alu]) {
             if (pro=="nombre") {
-                console.log(" Profesor= "+ alumno[alu][pro]);       
-                texto+=" Profesor= "+ alumno[alu][pro] +"\n";
+                console.log("Profesor= "+ alumno[alu][pro]);       
+                texto+="Profesor= "+ alumno[alu][pro] +"\n";
             }
             
         }
@@ -108,7 +130,7 @@ for (const alu in alumno) {
             }
         }
     }
-    else{
+    else if (alu!="calcularMedia"){
         console.log(alu + " " + alumno[alu]);
         texto+=alu + " " + alumno[alu] +"\n";
     }
