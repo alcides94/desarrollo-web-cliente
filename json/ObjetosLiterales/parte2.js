@@ -45,9 +45,8 @@ let asignaturas=[
         nombre:"PHP",
         curso:"DAW",
         horas:200,
-        mostrar(){
-            return JSON.stringify(this.nombre+"\n"+this.curso+"\n"+this.horas);
-        },
+        funcion: mostrar,
+
         cambiarHoras(hora){
             this.horas=hora;
         } 
