@@ -1,0 +1,98 @@
+WebStorage es una nueva API de Javascript asociada a la tecnología HTML5.
+Esta API viene a completar y mejorar la forma de almacenar información en la parte del
+cliente que hasta ahora se hacía usando cookies.
+
+Session Storage, el cual se usa para guardar información que caducará al final de la sesión 
+Session Storage está pensado para guardar información referente a una
+ventana/pestaña en la que el usuario lleva a cabo una transacción simple, pero podría
+llevar a cabo múltiples transacciones en diferentes ventanas/pestañas al mismo tiempo.
+Los datos de estas transacciones se pierden al cerrar el navegador.
+Pej.: Formulario de registro donde, si el usuario pierde la conexión y debe darle a
+actualizar (F5), no tenga que volver a introducir los datos.
+
+Local Storage, que nos permitirá almacenar datos que perduren entre distintas visitas del mismo usuario al sitio
+web.
+Local Storage pensado para almacenar información útil para múltiples
+ventanas/pestañas, que perdura en el tiempo. Esta información no se puede compartir de
+navegador a navegador. En este caso los datos no desaparecen aun cerrando el
+navegador, únicamente se borrarán haciendo un borrado manual, mediante código, a
+través de la consola del navegador o borrándolas directamente desde la carpeta en la que
+se guardan en el SO.
+Pej.: Un formulario para hacer login, para que el usuario no tenga que introducir los
+datos cuando pulse a 'No cerrar sesión' (o 'Recordar')
+
+Propiedades de ambas son:
+
+** length: Nos indica la cantidad de pares clave/valor que contiene el objeto.
+** key(pos) Devuelve la clave que se encuentra en la posición indicada en el argumento pos..
+** getItem(clave) Devuelve el valor del objeto que tiene como clave el argumento que se le pasa.
+** setItem(clave,valor) Comprueba si la clave existe en el objeto, si no existe crea un nuevo item 
+    y en caso de existir, actualiza su valor al valor que se le pasa como segundo parámetro.
+** removeItem(clave) Borra el item que tiene como clave el argumento indicado
+** clear() Elimina TODOS los items del objeto.
+
+8.2.1 Almacenar valores
+Existen tres maneras diferentes de almacenar un valor:
+1. Utilizando el método setItem comentado en el apartado anterior:
+    localStorage.setItem('clave','valor');
+
+2. Insertando un nuevo elemento como si fuera un array asociativo:
+    localStorage['clave'] = 'valor';
+
+3. Usando la notación punto, es decir, trabajando directamente con el objeto:
+    localStorage.clave = 'valor';
+
+8.2.2 Recuperar valores
+Al igual que en el caso anterior, tenemos tres formas diferentes de obtener el valor de un
+elemento del objeto localStorage:
+    1. valor = localStorage.getItem('clave');
+    2. valor = localStorage['clave'];
+    3. valor = localStorage.clave;
+
+8.2.3 Borrar valores
+//Borra el elemento que posee esa clave-valor
+    localStorage.removeItem('clave');
+//Borra todos los elementos
+    localStorage.clear();
+
+8.2.4 Otras operaciones
+Consultar cuantos elementos tenemos almacenados con 
+    localStorage.length
+También podemos obtener el nombre de una determinada clave usando
+    localStorage.key(i), donde i es la posición en que se encuentra la clave.
+
+Ej: //MOSTRAR LAS CLAVES Y EL CONTENIDO DE UN localStorage
+
+var tam=localStorage.length;    
+//Saber cuántos elementos tenemos guardados
+
+console.log('Tenemos ' + tam + ' elementos dentro de Local Storage');
+    //Recorrer todo el contenido de localStorage
+for(var i=0; i < tam; i++) {
+    key = localStorage.key(i);
+    console.log('Para la clave ' + key + ' el valor es: '+ localStorage[key]);
+}
+
+8.3 Almacenando objetos -> LU GUARDA TODO EN STRING , no guarda objetos debemos usuar
+|   JSON.stringify(objeto) Transforma (serializa) un objeto en una cadena con formato JSON.
+    JSON.parse(cadena_json) Transforma (deserializa) una cadena con formato JSON en un objeto.
+
+La forma de actuar sería:
+1. Creamos nuestro objeto usando JSON.
+2. Lo transformamos en una cadena de texto (JSON.stringify)
+3. Lo almacenamos en local/session storage.
+4. Recuperamos el objeto y pasamos la cadena a JSON (JSON.parse).
+
+Ej:
+//Creamos objeto
+var usuario = {
+    nombre: "Jaime Hormiga",
+    edad: 33,
+    claves: ["web", "cursoweb", "docenteweb"]
+}
+//Transformamos
+    var temp = JSON.stringify(usuario);
+//Almacenamos
+    localStorage.usuario = temp;
+//Recuperamos
+    var nuevo_usuario = JSON.parse(localStorage.usuario);

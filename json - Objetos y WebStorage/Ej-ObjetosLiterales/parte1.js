@@ -10,23 +10,23 @@ let tutor ={
 let asignaturas=[
     {
         nombre:"JS",
-        curso:"DAW",
+        curso:2,
         horas:200
     },
     {
         nombre:"Diseño",
-        curso:"DAW",
+        curso:2,
         horas:100
     },
 
     {
         nombre:"PHP",
-        curso:"DAW",
+        curso:2,
         horas:200
     },
     {
         nombre:"Despliegue",
-        curso:"DAW",
+        curso:2,
         horas:150
     }
 
@@ -37,13 +37,13 @@ let alumno={
     edad:32,
     ciclo:"DAW",
     curso:2,
-    profesor: tutor,
+    tutor: tutor,
     listaAsignaturas:[
         asignaturas[0],
         asignaturas[1],
         asignaturas[2]
     ],
-    notas:[7,7,8]
+    notas:[[7,7,8],[7,5,9],[7,10,2]]
 
 }
 
@@ -52,18 +52,22 @@ let alumno={
 
 let texto="";
 for (const alu in alumno) {
-    if (alu=="profesor") {
-        for (const pro in alumno[alu]) {
+    if (alu=="tutor") {
+        /*for (const pro in alumno[alu]) {
             if (pro=="nombre") {
                 console.log(" Profesor= "+ alumno[alu][pro]);       
                 texto+=" Profesor= "+ alumno[alu][pro] +"\n";
             }
             
-        }
+        }*/
+
+            texto+="Profesor= "+ alumno[alu].nombre +"\n";
+        
     }else if (alu=="listaAsignaturas"){
-        let asignatura_individual=alumno[alu];
+        //FORMA CASERA COMO REALICE EL RECORRIDO DE UN ARRAY DENTRO DEL OBJETO
+        //let asignatura_individual=alumno[alu];
         //console.log(Object.values(asignatura_individual));   
-        for (const asig in asignatura_individual) {
+        /*for (const asig in asignatura_individual) {
             //console.log(asig +" "+ asignatura_individual[asig]);
             for (const asig2 in asignatura_individual[asig]) {
                 if (asig2=="nombre") {
@@ -72,9 +76,18 @@ for (const alu in alumno) {
                 }
                 
             }
-        }
+        }*/
+        alumno[alu].forEach((asignatura,index)=>{
+            texto+= "Asignatura= "+ asignatura.nombre+"\n";
+            
+            alumno.notas[index].forEach((nota)=>{
+                texto+= " -> Nota= "+nota+"\n";
+            })
+
+        })
+
     }
-    else{
+    else if (alu!="notas"){
         console.log(alu + " " + alumno[alu]);
         texto+=alu + " " + alumno[alu] +"\n";
     }
