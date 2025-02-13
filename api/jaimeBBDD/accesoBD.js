@@ -53,14 +53,16 @@ document.querySelector("#obtener").addEventListener("click", function () {
  * cogemos los datos del formuario y los enviamos a través de la cabecera.
  */
 document.querySelector("#enviar").addEventListener("click", function () {
-    url = "http://www.jaimeweb.es/medac/ejemplos/addJuego.php";
+    let salida = document.querySelector("#salida"); 
+    const url = "http://www.jaimeweb.es/medac/ejemplos/addJuego.php";
 
     let formu = document.querySelector("form");
     let fd = new FormData(formu);
-
+    
     //Para añadir un dato nuevo al form
     fd.append("dato", "nuevo dato");
-
+    console.log(fd);
+    
     //Para borrar un dato
     //fd.delete("dato");
 
@@ -80,7 +82,7 @@ document.querySelector("#enviar").addEventListener("click", function () {
         .then(function (respuesta) {
 
             if (!respuesta.ok) {
-                throw new Error("Error del fetch: " + error);
+                throw new Error("Error del fetch: " + respuesta.status);
             };
 
             return respuesta.json();

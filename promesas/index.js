@@ -35,7 +35,9 @@ console.log("pidiendo cafe....");
 pedido
     .then(function (respuesta) {
         console.log(respuesta);
-        
+    })
+    .then(function(otra_respuesta){
+        console.log(otra_respuesta);
     })
     .catch(function (error) {
         console.log(error);
